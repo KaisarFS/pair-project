@@ -15,11 +15,46 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Profile.init({
-    fullName: DataTypes.STRING,
-    profileImg: DataTypes.STRING,
-    location: DataTypes.STRING,
-    address: DataTypes.STRING,
-    UserId: DataTypes.INTEGER,
+    fullName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Full name harus diisi!'},
+        notEmpty: { msg: 'Full name harus diisi!' }
+      }
+    },
+    profileImg: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Image Url harus diisi!'},
+        notEmpty: { msg: 'Image Url harus diisi!' }
+      }
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Location harus diisi!'},
+        notEmpty: { msg: 'Location harus diisi!' }
+      }
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Address harus diisi!'},
+        notEmpty: { msg: 'Address harus diisi!' }
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'User harus diisi!'},
+        notEmpty: { msg: 'User harus diisi!' }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Profile',

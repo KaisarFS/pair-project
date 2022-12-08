@@ -136,7 +136,6 @@ class UserController {
 
     static renderProfile(req, res) {
         const userId = req.session.userId
-        console.log(userId, '<=========');
         Profile.findAll({
             where: { id: userId }
         })
@@ -152,7 +151,8 @@ class UserController {
     }
 
     static renderCreateProfile(req, res) {
-        res.render('user-createProfile')
+        let { errors } = req.query
+        res.render('user-createProfile', { errors })
     }
     static addProfile(req, res) {
         const userId = req.session.userId
@@ -165,17 +165,30 @@ class UserController {
             address,
             UserId: userId
         }
-        // console.log(fullName, profileImg, location, address, '<========== REQ');
         Profile.create(data)
         .then(data => {
             res.redirect(`/user/profile/${userId}`)
         })
-        .catch(err => res.send(err))
+        .catch(err => {
+            if(err.name ==='SequelizeValidationError') {
+                err = err.errors.map(el => el.message)
+            }
+            res.redirect(`/user/profile/create?errors=${err}`)
+        });
     }
 
     static animalList(req, res) {
         console.log(req.query);
         let name = req.query.name
+        let profileData
+
+        Profile.findAll({
+            where: { id: idUser }
+        })
+        .then(data => {
+            // res.send(data)
+            profileData = data
+        })
     
         let option = {
           include: {
@@ -199,7 +212,7 @@ class UserController {
         })
         .then(data => {
             // res.send(data)
-            res.render('items-list', { result: data, idUser})
+            res.render('items-list', { result: data, idUser, profileData})
           })
           .catch((err) => {
             res.send(err)

@@ -39,13 +39,13 @@
       <strong>Age</strong><br>
       <input type="number" placeholder="1.0" class="form-control" step="0.01" name="age" /><br>
       
-      <strong>Category</strong><br>
+      <strong>Category (Ayam, Sapi, Kelinci, Babi)</strong><br>
       <input type="text" name="category" class="form-control"><br>
       
       <strong>Price</strong><br>
       <input type="number" name="price" id="" class="form-control"><br>
       
-      <strong>Weight</strong><br>
+      <strong>Weight (Kg)</strong><br>
       <input name="weight" type="number" class="form-control" placeholder="1.0" step="0.01" /><br>
       
       <strong>Image</strong><br>
@@ -57,7 +57,7 @@
       <select name="UserId" id="" class="form-control">
         <option value="">--Select One--</option>
         <% result.forEach(el=> { %>
-          <option value="<%=el.UserId%>">
+          <option value="<%= el.UserId %>">
             <%=el.fullName%>
           </option>
           <% }) %>

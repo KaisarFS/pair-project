@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: { msg: 'Email harus diisi!'},
         notEmpty: { msg: 'Email harus diisi!' },
-        isEmail: { msg: 'format email tidak valid!' }
+        isEmail: { msg: 'format email tidak valid!' },
       }
     },
     password: {
@@ -34,6 +34,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: { msg: 'Password harus diisi!'},
         notEmpty: { msg: 'Password harus diisi!' },
+        validatePassword(val) {
+          if(val.length < 8) {
+            throw new Error('Password minimal 8 karakter!')
+          }
+        }
       }
     },
     role: DataTypes.STRING

@@ -27,8 +27,11 @@
             <button type="submit" class="btn btn-dark">Search</button>
         </form><br>
 
-        <a href="/user/profile/<%= idUser %>" class="btn btn-primary">Profile</a>
-        <a href="/user/items/add" class="btn btn-primary">Add new animal</a>
+          <a href="/user/profile/<%= idUser %>" class="btn btn-success">My Profile</a>
+        
+        <% if(profileData.length !== 0) { %>
+          <a href="/user/items/add" class="btn btn-primary">Add new animal</a>
+        <% } %> 
 
         <table class="table">
             <thead>
@@ -52,7 +55,6 @@
                 <td><%=el.category%></td>
                 <td><%=el.priceFormat()%></td>
                 <td><%= el.age %></td>
-                <td><%= el.User.Profile.fullName %> </td>
                 <td>
                     <a href="/user/items/<%= el.id %>/delete"><button class="btn btn-danger">Delete</button></a>
                 </td>
