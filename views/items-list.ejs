@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <form action="/user/home">
+    Search <input type="search" name="name" id="">
+    <button type="submit">Search</button>
+  </form>
+
+  <table border="2px">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Owner</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% result.forEach(el=> { %>
+        <tr>
+          <td><img src="<%=el.img%>" alt="" width="200px"></td>
+          <td>
+            <%=el.name%>
+          </td>
+          <td>
+            <%=el.category%>
+          </td>
+          <td>
+            <%=el.priceFormat()%>
+          </td>
+          <td>
+            <%= el.User.Profile.fullName%>
+          </td>
+          <td>
+            <button>Delete</button>
+            <button>Sold</button>
+            <button>Detail</button>
+          </td>
+        </tr>
+        <% }) %>
+    </tbody>
+  </table>
+
+
+
+
+
+</body>
+
+</html>

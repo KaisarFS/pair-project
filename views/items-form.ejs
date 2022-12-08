@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1>Add New Animal</h1>
+
+
+  <form action="/user/items/add" method="post">
+    Name
+    <input type="text" name="name" id="">
+    <br><br>
+    Age
+    <input type="number" placeholder="1.0" step="0.01" name="age" />
+    <br><br>
+    Category
+    <input type="text" name="category">
+    <br><br>
+    Price
+    <input type="number" name="price" id="">
+    <br><br>
+    Weight
+    <input name="weight" type="number" placeholder="1.0" step="0.01" />
+    <br><br>
+
+    Image
+    <input type="url" name="img" id="">
+    <br><br>
+
+    Description
+    <textarea name="description" id="" cols="30" rows="10"></textarea>
+
+    <select name="UserId" id="">
+      <option value="">--Select One--</option>
+      <% result.forEach(el=> { %>
+        <option value="<%=el.UserId%>">
+          <%=el.fullName%>
+        </option>
+        <% }) %>
+    </select>
+
+    <button type="submit">Submit</button>
+
+
+
+
+
+  </form>
+
+
+</body>
+
+</html>

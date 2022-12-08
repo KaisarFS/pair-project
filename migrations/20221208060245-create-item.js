@@ -1,22 +1,37 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-   up(queryInterface, Sequelize) {
-    return queryInterface.createTable('Users', {
+  up(queryInterface, Sequelize) {
+    return queryInterface.createTable('Items', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
+      name: {
         type: Sequelize.STRING
       },
-      password: {
+      age: {
+        type: Sequelize.DECIMAL
+      },
+      category: {
         type: Sequelize.STRING
       },
-      role: {
+      price: {
+        type: Sequelize.INTEGER
+      },
+      weight: {
+        type: Sequelize.DECIMAL
+      },
+      img: {
         type: Sequelize.STRING
+      },
+      description: {
+        type: Sequelize.TEXT
+      },
+      isSold: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -28,7 +43,7 @@ module.exports = {
       }
     });
   },
-   down(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Users');
+  down(queryInterface, Sequelize) {
+    return queryInterface.dropTable('Items');
   }
 };

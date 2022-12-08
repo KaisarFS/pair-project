@@ -2,20 +2,23 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
    up(queryInterface, Sequelize) {
-    return queryInterface.createTable('Users', {
+     return queryInterface.createTable('Profiles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
+      fullName: {
         type: Sequelize.STRING
       },
-      password: {
+      profileImg: {
         type: Sequelize.STRING
       },
-      role: {
+      location: {
+        type: Sequelize.STRING
+      },
+      address: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -29,6 +32,6 @@ module.exports = {
     });
   },
    down(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Users');
+     return queryInterface.dropTable('Profiles');
   }
 };

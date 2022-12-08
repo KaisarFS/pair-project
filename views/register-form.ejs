@@ -25,15 +25,15 @@
 		      	<h3 class="mb-4 text-center"><strong>Create Account</strong></h3>
 		      	<form action="/register" class="signin-form" method="post">
 		      		<div class="form-group">
-		      			<input type="text" class="form-control" name="username" placeholder="Username" required>
+		      			<input type="text" class="form-control" name="email" placeholder="email" required>
 		      		</div>
 	            <div class="form-group">
 	              <input id="password-field" type="password" name="password" class="form-control" placeholder="Password" required>
 	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 	            </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <input type="text" class="form-control" name="role" placeholder="Role | admin/user" required>
-                </div>
+                </div> -->
 	            <div class="form-group">
 	            	<button type="submit" class="form-control btn btn-primary submit px-3">Register</button>
 	            </div>
@@ -41,6 +41,9 @@
 	            	
 	          </form>
 		      </div>
+				</div>
+				<div class="w-50 text-md-right">
+					<a href="/login" style="color: #fff">Already have an account? Sign-in</a>
 				</div>
 			</div>
 		</div>

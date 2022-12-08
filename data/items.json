@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Alexander",
+    "age": 5,
+    "category": "Sapi",
+    "price": 14000000,
+    "weight": 1200,
+    "img": "https://t4.ftcdn.net/jpg/02/48/06/73/360_F_248067351_nGy9A0eWCZQgdg11byXcgH12y4nrJLSw.jpg",
+    "description": "Jual sapi super asal Itali dengan name Alexander, sapi sehat terawat, bisa nego halus",
+    "UserId": 1
+  },
+  {
+    "name": "Julia",
+    "age": 6,
+    "category": "Sapi",
+    "price": 16000000,
+    "weight": 1000,
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Cow_female_black_white.jpg/800px-Cow_female_black_white.jpg",
+    "description": "Jual sapi betina sehat, makan lahap rajin bekerja, bisa menghasilkan susu 5 liter sehari, minat dm",
+    "UserId": 1
+  },
+  {
+    "name": "Lucy",
+    "age": 0.4,
+    "category": "Ayam",
+    "price": 100000,
+    "weight": 3.1,
+    "img": "https://images.unsplash.com/photo-1612170153139-6f881ff067e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80",
+    "description": "Jual ayam betina, ayam sehat bisa bertelur 10 butir perhari, makan lahap dan tidak pernah sakit",
+    "UserId": 1
+  },
+  {
+    "name": "Paul",
+    "age": 0.8,
+    "category": "Ayam",
+    "price": 80000,
+    "weight": 2.2,
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Rooster-1.jpg/640px-Rooster-1.jpg",
+    "description": "Jual ayam jantan, kuat berkokok, kuat makan, siap di adu dengan preman pasar"
+  },
+  {
+    "name": "Julian",
+    "age": 3,
+    "category": "Kambing",
+    "price": 2500000,
+    "weight": 35,
+    "img": "https://render.fineartamerica.com/images/rendered/default/poster/10/8/break/images-medium/emo-goat-oscar-castanon.jpg",
+    "description": "Jual kambing jantan, kondisi sehat bisa stand up comedy, cocok untuk di kurban",
+    "UserId": 2
+  },
+  {
+    "name": "Madonna",
+    "age": "2.5",
+    "category": "Kambing",
+    "price": 3000000,
+    "weight": "40",
+    "img": "https://pbs.twimg.com/profile_images/1125578066711814145/Lze0RWKv_400x400.jpg",
+    "description": "Dijual kambing betina, usia 2.5 tahun, sehat dan makan lahap, bisa nyanyi",
+    "UserId": 2
+  }
+]
