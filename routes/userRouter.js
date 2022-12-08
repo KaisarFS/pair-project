@@ -4,7 +4,7 @@ const UserController = require('../controllers/UserController');
 const router = express.Router()
 
 router.get('/items', UserController.animalList)
-router.get('/items/add', Controller.itemForm)
+router.get('/items/add', UserController.itemForm)
 router.post('/items/add', Controller.addItem)
 router.get('/items/:id/delete', Controller.deleteItem)
 // router.get('/items/:id/edit', Controller.renderEdit)

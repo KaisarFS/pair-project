@@ -17,9 +17,9 @@
 </style>
 
 <body>
+  <%- include('./partials/navbar'); %>
 
     <div class="center">
-        <%- include('./partials/navbar'); %>
         <h1>List Hewan</h1>
 
         <form action="/user/items">
@@ -55,6 +55,7 @@
                 <td><%=el.category%></td>
                 <td><%=el.priceFormat()%></td>
                 <td><%= el.age %></td>
+                <td><%= el.User.Profile.fullName %> </td>
                 <td>
                     <a href="/user/items/<%= el.id %>/delete"><button class="btn btn-danger">Delete</button></a>
                 </td>

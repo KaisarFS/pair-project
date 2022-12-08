@@ -21,17 +21,17 @@ class Controller {
           });
       }
     
-      static itemForm(req, res) {
-        let { errors } = req.query
-        Profile.findAll()
-          .then((result) => {
-            res.render('items-form', { result, errors })
-            // res.send(result)
-          })
-          .catch((err) => {
-            res.send(err)
-          });
-      }
+      // static itemForm(req, res) {
+      //   let { errors } = req.query
+      //   Profile.findAll()
+      //     .then((result) => {
+      //       res.render('items-form', { result, errors })
+      //       // res.send(result)
+      //     })
+      //     .catch((err) => {
+      //       res.send(err)
+      //     });
+      // }
     
       static addItem(req, res) {
         const newData = {

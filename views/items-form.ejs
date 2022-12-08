@@ -54,11 +54,12 @@
       <strong>Description</strong><br>
       <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea><br>
       
+      <strong>Owner name:</strong>
       <select name="UserId" id="" class="form-control">
-        <option value="">--Select One--</option>
+        <option value="" selected disabled>--Select One--</option>
         <% result.forEach(el=> { %>
-          <option value="<%= el.UserId %>">
-            <%=el.fullName%>
+          <option value="<%= el.UserId %>" <%= el.UserId === idUser ? 'selected' : 'selected disabled'%> >
+            <%= el.fullName %>
           </option>
           <% }) %>
         </select><br><br>

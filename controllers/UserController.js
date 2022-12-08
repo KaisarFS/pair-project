@@ -177,6 +177,18 @@ class UserController {
         });
     }
 
+    static itemForm(req, res) {
+        let { errors } = req.query
+        Profile.findAll()
+          .then((result) => {
+            res.render('items-form', { result, idUser, errors })
+            // res.send(result)
+          })
+          .catch((err) => {
+            res.send(err)
+          });
+      }
+
     static animalList(req, res) {
         console.log(req.query);
         let name = req.query.name
