@@ -1,6 +1,7 @@
-const { User } = require('../models')
+const { User, Profile, Item } = require('../models')
 const bcrypt = require('bcryptjs')
 const sendMail = require('../helpers/nodemailer.js')
+let idUser
 
 class UserController {
     static loginForm(req, res) {
@@ -37,10 +38,10 @@ class UserController {
                     const isValidPassword = bcrypt.compareSync(password, user.password)
                     console.log(isValidPassword)
                     if (isValidPassword) {
-
                         req.session.userId = user.id
                         req.session.role = user.role
-
+                        idUser = req.session.userId
+                        
                         if (req.session.role === 'user') {
                             return res.redirect('/user/items')
                         } else if (req.session.role === 'admin') {
@@ -104,6 +105,85 @@ class UserController {
         })
         .catch(err => res.send(err))
     }
+
+    static renderProfile(req, res) {
+        // res.render('user-profile')
+        const userId = req.session.userId
+        console.log(userId, '<=========');
+        Profile.findAll({
+            where: { id: userId }
+        })
+        .then(data => {
+            // res.send(data)
+            console.log(data, '<------- eaeaea');
+            if(data.length === 0) {
+                // res.render('user-createProfile')
+                res.redirect('/user/profile/create')
+            } else {
+                // res.redirect(`/user/profile/${userId}`)
+                // res.send(data)
+                res.render('user-profile', {data})
+            }
+        })
+        .catch(err => res.send(err))
+    }
+
+    static renderCreateProfile(req, res) {
+        res.render('user-createProfile')
+    }
+    static addProfile(req, res) {
+        const userId = req.session.userId
+        const { fullName, profileImg, location, address } = req.body
+        let data = {
+            id: userId,
+            fullName,
+            profileImg,
+            location,
+            address,
+            UserId: userId
+        }
+        // console.log(fullName, profileImg, location, address, '<========== REQ');
+        Profile.create(data)
+        .then(data => {
+            res.redirect(`/user/profile/${userId}`)
+        })
+        .catch(err => res.send(err))
+    }
+
+    static animalList(req, res) {
+        console.log(req.query);
+        let name = req.query.name
+    
+        let option = {
+          include: {
+            model: User,
+            include: Profile
+          },
+          where: {
+            UserId: idUser
+          }
+        }
+    
+        if (name) {
+          option.where.name = {
+            [Op.iLike]: `%${name}%`
+          }
+        }
+    
+        Item.findAll(option)
+          .then((result) => {
+            return Item.formatAge(result)
+        })
+        .then(data => {
+            // res.send(data)
+            res.render('items-list', { result: data, idUser})
+          })
+          .catch((err) => {
+            res.send(err)
+          });
+      }
+
+
 }
 
 module.exports = UserController

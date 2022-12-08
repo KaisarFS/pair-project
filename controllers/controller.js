@@ -1,49 +1,62 @@
-const { User, Profile, Item} = require('../models')
+const { User, Profile, Item} = require('../models');
 
 class Controller {
     static renderHome(req, res) {
         res.render('home')
     }
 
-    static renderProfile(req, res) {
+    // static renderProfile(req, res) {
+    //     // res.render('user-profile')
+    //     Profile.findAll()
+    //     .then(data => {
+    //         res.send(data)
+    //     })
+    //     .catch(err => res.send(err))
+    // }
 
-        // res.render('user-profile')
-    }
-
-    static animalList(req, res) {
-        console.log(req.query);
-        let name = req.query.name
+    // static animalList(req, res) {
+    //     console.log(req.query);
+    //     let name = req.query.name
     
-        let option = {
-          include: {
-            model: User,
-            include: Profile
-          },
-          where: {}
-        }
+    //     let option = {
+    //       include: {
+    //         model: User,
+    //         include: Profile
+    //       },
+    //       where: {}
+    //     }
     
-        if (name) {
-          option.where.name = {
-            [Op.iLike]: `%${name}%`
+    //     if (name) {
+    //       option.where.name = {
+    //         [Op.iLike]: `%${name}%`
+    //       }
+    //     }
+    
+    //     Item.findAll(option)
+    //       .then((result) => {
+    //         return Item.formatAge(result)
+    //     })
+    //     .then(data => {
+    //         // res.send(data)
+    //         res.render('items-list', { result: data })
+    //       })
+    //       .catch((err) => {
+    //         res.send(err)
+    //       });
+    //   }
+    static deleteItem(req, res) {
+        Item.destroy({
+          where: {
+            id: req.params.id
           }
-        }
-    
-        Item.findAll(option)
-          .then((result) => {
-            // result = result.map (el => {
-            //     return el.User
-            // })
-            // res.send(result.forEach(el => 
-            //          el.User.Profile))
-            // res.send(result)
-            // console.log(result[0].User.Profile.fullName, '<-----------------------');
-            res.render('items-list', { result })
+        })
+          .then(() => {
+            res.redirect('/user/items')
           })
           .catch((err) => {
             res.send(err)
           });
       }
-    
     
       static itemForm(req, res) {
         Profile.findAll()

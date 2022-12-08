@@ -36,7 +36,8 @@
     "price": 80000,
     "weight": 2.2,
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Rooster-1.jpg/640px-Rooster-1.jpg",
-    "description": "Jual ayam jantan, kuat berkokok, kuat makan, siap di adu dengan preman pasar"
+    "description": "Jual ayam jantan, kuat berkokok, kuat makan, siap di adu dengan preman pasar",
+    "UserId": 1
   },
   {
     "name": "Julian",
@@ -53,7 +54,7 @@
     "age": "2.5",
     "category": "Kambing",
     "price": 3000000,
-    "weight": "40",
+    "weight": 40,
     "img": "https://pbs.twimg.com/profile_images/1125578066711814145/Lze0RWKv_400x400.jpg",
     "description": "Dijual kambing betina, usia 2.5 tahun, sehat dan makan lahap, bisa nyanyi",
     "UserId": 2

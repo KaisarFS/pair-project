@@ -15,6 +15,9 @@
     <button type="submit">Search</button>
   </form>
 
+  <a href="/user/profile/<%= idUser %>" class="btn btn-primary">Profile</a>
+  <a href="/user/items/add">Add new animal</a>
+
   <table border="2px">
     <thead>
       <tr>
@@ -22,6 +25,7 @@
         <th>Name</th>
         <th>Category</th>
         <th>Price</th>
+        <th>Age</th>
         <th>Owner</th>
         <th>Action</th>
       </tr>
@@ -41,10 +45,12 @@
             <%=el.priceFormat()%>
           </td>
           <td>
-            <%= el.User.Profile.fullName%>
+            <%= el.age %> 
           </td>
           <td>
-            <button>Delete</button>
+          </td>
+          <td>
+            <a href="/user/items/<%= el.id %>/delete"><button>Delete</button></a>
             <button>Sold</button>
             <button>Detail</button>
           </td>

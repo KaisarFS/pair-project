@@ -14,6 +14,20 @@ module.exports = (sequelize, DataTypes) => {
       Item.belongsTo(models.User)
     }
 
+    static formatAge(data) {
+      let result = []
+      data = data.map(el => {
+        if(el.age < 1) {
+          el.age = `${el.age} - Muda`
+          result.push(el)
+        } else {
+          el.age = `${el.age} - Tua`
+          result.push(el)
+        }
+      })
+      return result 
+    }
+
     priceFormat() {
       return this.price.toLocaleString('id-ID', {
         style: 'currency',

@@ -13,7 +13,7 @@ function sendEmail(email) {
 
     let details = {
         from: "kaisarfirjatullah@gmail.com",
-        to: "kaisar.10rpl2.2019@gmail.com",
+        to: email,
         subject: "Selamat!, Sekarang kamu bisa mulai jualan",
         text: "TES TES TES"
     }

@@ -19,9 +19,13 @@
 <body>
     <%- include('./partials/navbar'); %>
 
-        <h1>Welcome, NAME_HERE<h1>
+        <h1>Welcome, <%= data[0].fullName %> <h1>
         <div class="center">
-            
+            <strong>fullName:  <%= data[0].fullName %> </strong><br>
+            <img src="<%= data[0].profileImg %> " alt="">
+            <strong>location:  <%= data[0].location %> </strong><br>
+            <strong>address:  <%= data[0].address %> </strong><br>
+            <strong>Join:  <%= data[0].createdAt %> </strong><br>
         </div>
 
 
