@@ -1,7 +1,10 @@
 const { User, Profile, Item } = require('../models')
 const bcrypt = require('bcryptjs')
 const sendMail = require('../helpers/nodemailer.js')
+const { Op } = require('sequelize')
+const moment = require('moment')
 let idUser
+
 
 class UserController {
     static loginForm(req, res) {
@@ -10,7 +13,8 @@ class UserController {
     }
 
     static registerForm(req, res) {
-        res.render('register-form')
+        let { errors } = req.query
+        res.render('register-form', { errors })
     }
 
     static postRegister(req, res) {
@@ -22,9 +26,13 @@ class UserController {
                 // res.send(newUser)
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
                 // res.send(err)
-            })
+            if(err.name ==='SequelizeValidationError') {
+                err = err.errors.map(el => el.message)
+            }
+            res.redirect(`/register?errors=${err}`)
+            });
     }
 
     static postLogin(req, res) {
@@ -50,11 +58,11 @@ class UserController {
 
 
                     } else {
-                        const error = 'invalid username / password'
+                        const error = 'Invalid Email or Password'
                         return res.redirect(`/login?error=${error}`)
                     }
                 } else {
-                    const error = 'invalid username / password'
+                    const error = 'Invalid Email or Password'
                     return res.redirect(`/login?error=${error}`)
                 }
             })
@@ -93,8 +101,23 @@ class UserController {
         })
     }
 
+    static updateAdmin(req, res) {
+        const { id } = req.params
+        
+        User.update({ role: 'admin' }, {
+            where: { id }
+        })
+        .then(() => {
+            res.redirect('/admin')
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+
     static renderCreateUser(req, res) {
-        res.render('admin-create')
+        let { errors } = req.query
+        res.render('admin-create', { errors })
     }
 
     static createUser(req, res) {
@@ -103,26 +126,26 @@ class UserController {
         .then(data => {
             res.redirect('/admin')
         })
-        .catch(err => res.send(err))
+        .catch(err => {
+            if(err.name ==='SequelizeValidationError') {
+                err = err.errors.map(el => el.message)
+            }
+            res.redirect(`/admin/create?errors=${err}`)
+        })
     }
 
     static renderProfile(req, res) {
-        // res.render('user-profile')
         const userId = req.session.userId
         console.log(userId, '<=========');
         Profile.findAll({
             where: { id: userId }
         })
         .then(data => {
-            // res.send(data)
             console.log(data, '<------- eaeaea');
             if(data.length === 0) {
-                // res.render('user-createProfile')
                 res.redirect('/user/profile/create')
             } else {
-                // res.redirect(`/user/profile/${userId}`)
-                // res.send(data)
-                res.render('user-profile', {data})
+                res.render('user-profile', {data, moment})
             }
         })
         .catch(err => res.send(err))
@@ -183,7 +206,7 @@ class UserController {
           });
       }
 
-
+     
 }
 
 module.exports = UserController

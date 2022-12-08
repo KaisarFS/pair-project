@@ -18,6 +18,9 @@ app.use(session({
     }
 }))
 
+app.get('/', (req, res) => {
+    res.redirect('/login')
+})
 app.use('/', routes)
 
 

@@ -1,6 +1,6 @@
 [
   {
-    "name": "Alexander",
+    "name": "Bobon",
     "age": 5,
     "category": "Sapi",
     "price": 14000000,
@@ -30,7 +30,7 @@
     "UserId": 1
   },
   {
-    "name": "Paul",
+    "name": "Jek",
     "age": 0.8,
     "category": "Ayam",
     "price": 80000,
@@ -40,7 +40,7 @@
     "UserId": 1
   },
   {
-    "name": "Julian",
+    "name": "Kambing super",
     "age": 3,
     "category": "Kambing",
     "price": 2500000,

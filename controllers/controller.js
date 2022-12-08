@@ -1,49 +1,12 @@
+const { where } = require('sequelize');
 const { User, Profile, Item} = require('../models');
+
 
 class Controller {
     static renderHome(req, res) {
         res.render('home')
     }
 
-    // static renderProfile(req, res) {
-    //     // res.render('user-profile')
-    //     Profile.findAll()
-    //     .then(data => {
-    //         res.send(data)
-    //     })
-    //     .catch(err => res.send(err))
-    // }
-
-    // static animalList(req, res) {
-    //     console.log(req.query);
-    //     let name = req.query.name
-    
-    //     let option = {
-    //       include: {
-    //         model: User,
-    //         include: Profile
-    //       },
-    //       where: {}
-    //     }
-    
-    //     if (name) {
-    //       option.where.name = {
-    //         [Op.iLike]: `%${name}%`
-    //       }
-    //     }
-    
-    //     Item.findAll(option)
-    //       .then((result) => {
-    //         return Item.formatAge(result)
-    //     })
-    //     .then(data => {
-    //         // res.send(data)
-    //         res.render('items-list', { result: data })
-    //       })
-    //       .catch((err) => {
-    //         res.send(err)
-    //       });
-    //   }
     static deleteItem(req, res) {
         Item.destroy({
           where: {
@@ -59,9 +22,10 @@ class Controller {
       }
     
       static itemForm(req, res) {
+        let { errors } = req.query
         Profile.findAll()
           .then((result) => {
-            res.render('items-form', { result })
+            res.render('items-form', { result, errors })
             // res.send(result)
           })
           .catch((err) => {
@@ -86,9 +50,37 @@ class Controller {
             res.redirect('/user/items')
           })
           .catch((err) => {
-            res.send(err)
+            // res.send(err)
+            if(err.name ==='SequelizeValidationError') {
+              err = err.errors.map(el => el.message)
+          }
+          res.redirect(`/user/items/add?errors=${err}`)
           });
       }
+
+      // static renderEdit(req, res) {
+      //   const { id } = req.params
+      //   Profile.findAll({
+      //     include: {
+      //       model: User,
+            
+      //       include: {
+      //         model: Item
+      //       }
+      //     },
+      //   }, {
+      //     where: {id}
+          
+      //   })
+      //     .then((result) => {
+      //       // res.render('items-edit', { result })
+      //       res.send(result)
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //       res.send(err)
+      //     });
+      // }
 }
 
 module.exports = Controller

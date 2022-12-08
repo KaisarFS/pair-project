@@ -1,0 +1,12 @@
+[
+    {
+        "email": "admin@hacktiv.com",
+        "password": "admin123",
+        "role": "admin"
+    },
+    {
+        "email": "kaisar.10rpl2.2019@gmail.com",
+        "password": "user123",
+        "role": "user"
+    }
+]

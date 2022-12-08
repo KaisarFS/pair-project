@@ -17,8 +17,19 @@
     <br><br>
     <div class="center">
         <h1>Create new Admin</h1>
+
+        <% if (errors) { %>
+          <% errors = errors.split(',') %>
+          <% errors.forEach(el => { %>
+            <div class="alert alert-danger" role="alert">
+              <%= el %>
+            </div>
+             
+          <% }) %>  
+      <% } %> 
+
         <form action="/admin/create" method="post">
-            <strong>Username</strong><br>
+            <strong>Email</strong><br>
             <input type="text" name="email" class="form-control" id=""><br>
 
             <strong>Password</strong><br>

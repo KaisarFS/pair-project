@@ -17,7 +17,7 @@
     <br><br>
     <div class="center">
         <h1>Admin Dashboard</h1>
-        <a href="/logout" class="btn btn-primary">Keluar</a>
+        <a href="/logout" class="btn btn-dark">Keluar halaman admin</a>
         <a href="/admin/create" class="btn btn-dark">Create Admin</a>
         <table class="table">
             <thead>
@@ -36,6 +36,9 @@
                     <td><%= el.role %></td>
                     <td>
                         <a href="/admin/delete/<%= el.id %>" class="btn btn-danger">Delete</a>
+                        <% if(el.role !== 'admin') { %>
+                          <a href="/admin/update/<%= el.id %>" class="btn btn-warning">Make as admin</a>
+                        <% } %> 
                     </td>
             <% }) %> 
             </tr>

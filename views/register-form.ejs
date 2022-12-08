@@ -23,6 +23,15 @@
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
 		      	<h3 class="mb-4 text-center"><strong>Create Account</strong></h3>
+				  <% if (errors) { %>
+					<% errors = errors.split(',') %>
+					<% errors.forEach(el => { %>
+					  <div class="alert alert-danger" role="alert">
+						<%= el %>
+					  </div>
+					   
+					<% }) %>  
+				<% } %> 
 		      	<form action="/register" class="signin-form" method="post">
 		      		<div class="form-group">
 		      			<input type="text" class="form-control" name="email" placeholder="email" required>

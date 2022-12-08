@@ -1,0 +1,16 @@
+[
+    {
+        "fullName": "Kaisar Firja",
+        "profileImg": "http://placekitten.com/200/300",
+        "location": "Sampit",
+        "address": "JL.Bukit Raya 5 No. 35 Sampit, Baamang, Kalimantan Tengah",
+        "UserId": "1"
+    },
+    {
+        "fullName": "Bayu Anggara",
+        "profileImg": "http://placekitten.com/200/300",
+        "location": "Jakarta",
+        "address": "Jl. Nimun Raya No.7, Kebayoran Lama, Jakarta Selatan",
+        "UserId": "2"
+    }
+]

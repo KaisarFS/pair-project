@@ -7,6 +7,7 @@ const router = express.Router()
 
 
 
+
 //? ================= LOGIN & REGISTER =================
 router.get('/register', UserController.registerForm)
 router.post('/register', UserController.postRegister)
@@ -46,6 +47,7 @@ router.use('/user', itemsRouter)
 
 //? ================= ADMIN =================
 router.get('/admin', UserController.renderAdmin)
+router.get('/admin/update/:id', UserController.updateAdmin)
 router.get('/admin/delete/:id', UserController.deleteUser)
 router.get('/admin/create', UserController.renderCreateUser)
 router.post('/admin/create', UserController.createUser)

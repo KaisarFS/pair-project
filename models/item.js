@@ -37,14 +37,70 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Item.init({
-    name: DataTypes.STRING,
-    age: DataTypes.DECIMAL,
-    category: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    weight: DataTypes.DECIMAL,
-    img: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    UserId: DataTypes.INTEGER,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Nama harus diisi!'},
+        notEmpty: { msg: 'Nama harus diisi!' }
+      }
+    },
+    age: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Age harus diisi!'},
+        notEmpty: { msg: 'Age harus diisi!' }
+      }
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Category harus diisi!'},
+        notEmpty: { msg: 'Category harus diisi!' }
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Price harus diisi!'},
+        notEmpty: { msg: 'Price harus diisi!' }
+      }
+    },
+    weight: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Weight harus diisi!'},
+        notEmpty: { msg: 'Weight harus diisi!' }
+      }
+    },
+    img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Photo URL harus diisi!'},
+        notEmpty: { msg: 'Photo URL harus diisi!' }
+      }
+    },
+    description: {
+      type:DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Description harus diisi!'},
+        notEmpty: { msg: 'Description harus diisi!' }
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Nama pemilik harus diisi!'},
+        notEmpty: { msg: 'Nama pemilik harus diisi!' }
+      }
+    },
     isSold: DataTypes.BOOLEAN
   }, {
     sequelize,
